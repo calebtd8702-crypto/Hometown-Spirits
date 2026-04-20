@@ -86,6 +86,7 @@ section {
 
 /* --- HERO SECTION 5.0 (Actual Exterior) --- */
 #hero {
+    min-height: 90vh;
     overflow: hidden;
     padding: 0;
 }
