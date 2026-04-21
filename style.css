@@ -349,8 +349,8 @@ section {
         box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Refinement: ZOOM OUT and SHIFT RIGHT to see the sign */
-    .hero-bg { object-position: 85% 30%; transform: scale(1.0); filter: brightness(0.5); }
+    /* Background Refinement: REVEAL SIGN ON THE RIGHT */
+    .hero-bg { object-position: 15% 30%; transform: scale(1.0); filter: brightness(0.5); }
 
     /* Ticker Downscaling */
     #live-ticker { min-height: 60px !important; }
@@ -372,10 +372,12 @@ section {
     /* Hide Desktop Cursors */
     #cursor, #cursor-follower { display: none !important; }
 
-    /* Matrix & Allocation Stacking */
+    /* Matrix & Allocation Stacking: Fix Cutoff */
     .matrix-card { height: 350px !important; grid-column: auto !important; }
-    #allocation .matrix-card { flex-direction: column !important; height: auto; padding: 30px !important; }
-    #allocation img { width: 100% !important; height: 280px !important; margin-bottom: 1.5rem; }
+    #allocation .matrix-card { flex-direction: column !important; height: auto !important; padding: 40px 20px !important; }
+    #allocation img { width: 100% !important; height: 280px !important; margin-bottom: 2rem !important; }
+    #allocation .matrix-info { position: relative !important; width: 100% !important; padding: 0 !important; background: none !important; }
+    #allocation .matrix-title { font-size: 2rem !important; }
 }
 
 /* --- CUSTOM CURSOR v4 --- */
