@@ -324,14 +324,15 @@ section {
 .ti-lt { top: 40px; left: 40px; }
 .ti-rt { top: 40px; right: 40px; }
 
-    /* --- MOBILE RECOVERY v6.2 --- */
+/* --- MOBILE RECOVERY v6.2 --- */
+@media (max-width: 768px) {
     section { padding: 60px 20px; min-height: auto; }
     .editorial-grid { display: flex; flex-direction: column; gap: 30px; }
     
     /* HUD Fix: Hide labels to prevent smashing */
     .hud-indicator { position: absolute; font-size: 0.6rem; letter-spacing: 0.1rem; }
     .hud-indicator b { visibility: visible; }
-    .hud-indicator:not(b) { color: transparent; } /* Hidden label hack */
+    .hud-indicator:not(b) { color: transparent; }
     .ti-lt { left: 15px; top: 15px; width: 60%; justify-content: flex-start; color: transparent !important; }
     .ti-rt { right: 15px; top: 15px; width: 30%; justify-content: flex-end; color: transparent !important; }
     .ti-rt b, .ti-lt b { color: var(--gold-muted); visibility: visible; }
@@ -347,7 +348,7 @@ section {
         box-shadow: 0 0 40px var(--gold-glow) !important;
     }
     
-    /* Background Nudge: Zoom out and center the sign for narrow screens */
+    /* Background Nudge */
     .hero-bg { object-position: center bottom; transform: scale(1.4); }
 
     /* Hide Desktop Cursors */
