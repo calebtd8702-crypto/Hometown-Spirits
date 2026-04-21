@@ -324,54 +324,57 @@ section {
 .ti-lt { top: 40px; left: 40px; }
 .ti-rt { top: 40px; right: 40px; }
 
-/* --- MOBILE PRECISION FIX v6.4 --- */
+/* --- FINAL MOBILE PERFECTION v6.5 --- */
 @media (max-width: 768px) {
     section { padding: 40px 20px; min-height: auto; }
     .editorial-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; padding: 0; }
     
-    /* HUD Fix: Clean Corners */
-    .hud-indicator { position: absolute; font-size: 0.6rem; letter-spacing: 0.1rem; }
+    /* HUD Fix: Explicit Corner Lock */
+    .hud-indicator { position: absolute; font-size: 0.65rem; letter-spacing: 0.15rem; z-index: 200; }
     .hud-indicator:not(b) { color: transparent; }
-    .ti-lt { left: 10px; top: 10px; width: auto; color: transparent !important; }
-    .ti-rt { right: 10px; top: 10px; width: auto; color: transparent !important; }
+    .ti-lt { left: 20px !important; top: 20px !important; width: auto !important; transform: none !important; }
+    .ti-rt { right: 20px !important; top: 20px !important; width: auto !important; transform: none !important; }
     .ti-rt b, .ti-lt b { color: var(--gold-muted); visibility: visible; }
     
-    /* Hero Precision: Perfect Centering */
-    #hero { min-height: 80vh; padding-top: 5vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    /* Hero Precision: Impactful Branding */
+    #hero { min-height: 85vh; padding-top: 10vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .hero-main { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .hero-title { font-size: 1.8rem !important; margin-top: 0.5rem !important; line-height: 1.2 !important; }
-    .hero-year { font-size: 0.75rem !important; margin-bottom: 0px !important; }
+    .hero-title { font-size: 2rem !important; margin-top: 1rem !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
+    .hero-year { font-size: 0.85rem !important; margin-bottom: 0.5rem !important; opacity: 0.8; }
     .magnetic-logo { 
-        width: 140px !important; 
-        height: 140px !important; 
-        margin: 0 auto 1rem auto !important;
-        box-shadow: 0 0 30px var(--gold-glow) !important;
+        width: 180px !important; 
+        height: 180px !important; 
+        margin: 0 auto 1.5rem auto !important;
+        box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Nudge */
-    .hero-bg { object-position: center bottom; transform: scale(1.5); }
+    /* Background Refinement: Show the sign clearly */
+    .hero-bg { object-position: center 30%; transform: scale(1.15); filter: brightness(0.5); }
 
     /* Ticker Downscaling */
     #live-ticker { min-height: 60px !important; }
-    .ticker-content span { font-size: 0.85rem !important; padding-right: 2rem !important; }
-    .dot { width: 8px !important; height: 8px !important; margin-right: 2rem !important; }
+    .ticker-content span { font-size: 0.9rem !important; padding-right: 2.5rem !important; }
+    .dot { width: 10px !important; height: 10px !important; margin-right: 2.5rem !important; }
 
-    /* Global Typography Scale-Down */
-    .matrix-title { font-size: 1.5rem !important; }
-    #allocation .matrix-title { font-size: 1.8rem !important; }
-    #allocation p { font-size: 1rem !important; }
-    #spotlight h2 { font-size: 2rem !important; }
-    .story-text h2 { font-size: 2.2rem !important; }
-    #footer h2 { font-size: 2.8rem !important; }
-    #footer p { font-size: 1.2rem !important; }
+    /* Footer / Visit Overhaul */
+    #footer .glass-panel { padding: 4rem 20px !important; }
+    #footer h2 { font-size: 3rem !important; }
+    #footer p { font-size: 1.3rem !important; }
+    #footer .capture-box { margin-top: 2rem !important; }
+
+    /* Global Typography Fixes */
+    .matrix-title { font-size: 1.6rem !important; }
+    #allocation .matrix-title { font-size: 2rem !important; }
+    #spotlight h2 { font-size: 2.2rem !important; }
+    .story-text h2 { font-size: 2.4rem !important; }
 
     /* Hide Desktop Cursors */
     #cursor, #cursor-follower { display: none !important; }
 
     /* Matrix & Allocation Stacking */
     .matrix-card { height: 350px !important; grid-column: auto !important; }
-    #allocation .matrix-card { flex-direction: column !important; height: auto; padding: 20px !important; }
-    #allocation img { width: 100% !important; height: 250px !important; margin-bottom: 1rem; }
+    #allocation .matrix-card { flex-direction: column !important; height: auto; padding: 30px !important; }
+    #allocation img { width: 100% !important; height: 280px !important; margin-bottom: 1.5rem; }
 }
 
 /* --- CUSTOM CURSOR v4 --- */
