@@ -349,8 +349,8 @@ section {
         box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Refinement: Final Nudge (40% X, 20% Y, 0.95 Scale) */
-    .hero-bg { object-position: 40% 20%; transform: scale(0.95); filter: brightness(0.5); }
+    /* Background Refinement: Elevated Focal Point (40% X, 5% Y) */
+    .hero-bg { object-position: 40% 5%; transform: scale(0.95); filter: brightness(0.5); }
 
     /* Ticker Downscaling */
     #live-ticker { min-height: 60px !important; }
