@@ -349,8 +349,8 @@ section {
         box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Refinement: REVEAL SIGN ON THE RIGHT */
-    .hero-bg { object-position: 15% 30%; transform: scale(1.0); filter: brightness(0.5); }
+    /* Background Refinement: Nudged Focal Point (30%) */
+    .hero-bg { object-position: 30% 30%; transform: scale(1.0); filter: brightness(0.5); }
 
     /* Ticker Downscaling */
     #live-ticker { min-height: 60px !important; }
