@@ -58,11 +58,9 @@ h1, h2, h3 {
 section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10vw;
 }
 
 /* --- EDITORIAL DESIGN --- */
@@ -86,7 +84,7 @@ section {
 
 /* --- HERO SECTION 5.0 (Actual Exterior) --- */
 #hero {
-    min-height: 90vh;
+    min-height: 100vh;
     overflow: hidden;
     padding: 0;
 }
@@ -259,7 +257,7 @@ section {
 
 /* --- SPOTLIGHT CAROUSEL --- */
 #spotlight {
-    padding-bottom: 5vh;
+    padding: 10vh 20px;
 }
 
 #spotlight .matrix-card {
