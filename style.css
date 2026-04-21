@@ -324,32 +324,46 @@ section {
 .ti-lt { top: 40px; left: 40px; }
 .ti-rt { top: 40px; right: 40px; }
 
-/* --- MOBILE RECOVERY v6.2 --- */
+/* --- MOBILE PRECISION FIX v6.4 --- */
 @media (max-width: 768px) {
-    section { padding: 60px 20px; min-height: auto; }
-    .editorial-grid { display: flex; flex-direction: column; gap: 30px; }
+    section { padding: 40px 20px; min-height: auto; }
+    .editorial-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; padding: 0; }
     
-    /* HUD Fix: Hide labels to prevent smashing */
+    /* HUD Fix: Clean Corners */
     .hud-indicator { position: absolute; font-size: 0.6rem; letter-spacing: 0.1rem; }
-    .hud-indicator b { visibility: visible; }
     .hud-indicator:not(b) { color: transparent; }
-    .ti-lt { left: 15px; top: 15px; width: 60%; justify-content: flex-start; color: transparent !important; }
-    .ti-rt { right: 15px; top: 15px; width: 30%; justify-content: flex-end; color: transparent !important; }
+    .ti-lt { left: 10px; top: 10px; width: auto; color: transparent !important; }
+    .ti-rt { right: 10px; top: 10px; width: auto; color: transparent !important; }
     .ti-rt b, .ti-lt b { color: var(--gold-muted); visibility: visible; }
     
-    /* Hero Stabilization */
-    #hero { min-height: 85vh; padding-top: 10vh; }
-    .hero-title { font-size: 2.2rem !important; margin-top: 0.5rem !important; }
-    .hero-year { font-size: 0.8rem !important; letter-spacing: 0.1rem !important; }
+    /* Hero Precision: Perfect Centering */
+    #hero { min-height: 80vh; padding-top: 5vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .hero-main { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hero-title { font-size: 1.8rem !important; margin-top: 0.5rem !important; line-height: 1.2 !important; }
+    .hero-year { font-size: 0.75rem !important; margin-bottom: 0px !important; }
     .magnetic-logo { 
-        width: 150px !important; 
-        height: 150px !important; 
-        margin-bottom: 1rem !important;
-        box-shadow: 0 0 40px var(--gold-glow) !important;
+        width: 140px !important; 
+        height: 140px !important; 
+        margin: 0 auto 1rem auto !important;
+        box-shadow: 0 0 30px var(--gold-glow) !important;
     }
     
     /* Background Nudge */
-    .hero-bg { object-position: center bottom; transform: scale(1.4); }
+    .hero-bg { object-position: center bottom; transform: scale(1.5); }
+
+    /* Ticker Downscaling */
+    #live-ticker { min-height: 60px !important; }
+    .ticker-content span { font-size: 0.85rem !important; padding-right: 2rem !important; }
+    .dot { width: 8px !important; height: 8px !important; margin-right: 2rem !important; }
+
+    /* Global Typography Scale-Down */
+    .matrix-title { font-size: 1.5rem !important; }
+    #allocation .matrix-title { font-size: 1.8rem !important; }
+    #allocation p { font-size: 1rem !important; }
+    #spotlight h2 { font-size: 2rem !important; }
+    .story-text h2 { font-size: 2.2rem !important; }
+    #footer h2 { font-size: 2.8rem !important; }
+    #footer p { font-size: 1.2rem !important; }
 
     /* Hide Desktop Cursors */
     #cursor, #cursor-follower { display: none !important; }
@@ -358,10 +372,6 @@ section {
     .matrix-card { height: 350px !important; grid-column: auto !important; }
     #allocation .matrix-card { flex-direction: column !important; height: auto; padding: 20px !important; }
     #allocation img { width: 100% !important; height: 250px !important; margin-bottom: 1rem; }
-    #allocation .matrix-title { font-size: 2rem !important; }
-
-    /* Spotlight Peek */
-    #spotlight div { padding-left: 5px; padding-right: 5px; }
 }
 
 /* --- CUSTOM CURSOR v4 --- */
