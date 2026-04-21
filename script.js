@@ -7,8 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reverting to native scroll for 100% field reliability.
     // Logic below handles interactions only.
 
+    // --- INTERACTIVE SHUTDOWN (Mobile) ---
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (isTouch) {
+        if (cursor) cursor.style.display = 'none';
+        if (follower) follower.style.display = 'none';
+    }
+
     // --- MAGNETIC LOGO INTERACTION ---
-    if (magneticLogo) {
+    if (magneticLogo && !isTouch) {
         magneticLogo.addEventListener('mousemove', (e) => {
             const bounds = magneticLogo.getBoundingClientRect();
             const x = e.clientX - bounds.left - bounds.width / 2;
@@ -23,15 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- CUSTOM CURSOR v4 ---
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-        
-        setTimeout(() => {
-            follower.style.left = `${e.clientX - 20}px`;
-            follower.style.top = `${e.clientY - 20}px`;
-        }, 30);
-    });
+    if (!isTouch) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            
+            setTimeout(() => {
+                follower.style.left = `${e.clientX - 20}px`;
+                follower.style.top = `${e.clientY - 20}px`;
+            }, 30);
+        });
+    }
 
     const hoverLinks = document.querySelectorAll('.matrix-card, .glass-panel, h2');
     hoverLinks.forEach(link => {
