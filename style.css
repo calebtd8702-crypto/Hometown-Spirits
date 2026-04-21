@@ -330,9 +330,9 @@ section {
     /* HUD Fix: Explicit Corner Lock */
     .hud-indicator { position: absolute; font-size: 0.65rem; letter-spacing: 0.15rem; z-index: 200; }
     .hud-indicator:not(b) { color: transparent; }
-    /* HUD Fix: TOP-LEFT LOCK for Status to avoid Right-Side Collision */
-    .ti-lt { left: 20px !important; top: 15px !important; width: 70% !important; justify-content: flex-start !important; text-align: left !important; }
-    .ti-rt { right: 20px !important; top: 15px !important; width: auto !important; justify-content: flex-end !important; }
+    /* HUD Flip: Status to Right, Time to Left */
+    .ti-lt { right: 20px !important; left: auto !important; top: 15px !important; width: auto !important; justify-content: flex-end !important; text-align: right !important; }
+    .ti-rt { left: 20px !important; right: auto !important; top: 15px !important; width: auto !important; justify-content: flex-start !important; }
     .ti-rt b, .ti-lt b { color: var(--gold-muted); visibility: visible; }
     
     /* Hero Precision: Impactful Branding */
@@ -347,8 +347,8 @@ section {
         box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Refinement: Elevated Focal Point (40% X, 5% Y) */
-    .hero-bg { object-position: 40% 5%; transform: scale(0.95); filter: brightness(0.5); }
+    /* Background Refinement: Absolute Top Focal Point (40% X, 0% Y) */
+    .hero-bg { object-position: 40% 0%; transform: scale(0.95); filter: brightness(0.5); }
 
     /* Ticker Downscaling */
     #live-ticker { min-height: 60px !important; }
