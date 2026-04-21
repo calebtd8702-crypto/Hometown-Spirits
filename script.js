@@ -117,8 +117,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updatePulseHUD, 1000);
     updatePulseHUD();
 
-    window.addEventListener('load', setSize);
-    setTimeout(setSize, 1000);
-    
-    requestAnimationFrame(updateScroll);
+    // Native scroll is primary. No additional logic needed for scrolling.
 });

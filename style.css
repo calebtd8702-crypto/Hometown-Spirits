@@ -332,8 +332,9 @@ section {
     /* HUD Fix: Explicit Corner Lock */
     .hud-indicator { position: absolute; font-size: 0.65rem; letter-spacing: 0.15rem; z-index: 200; }
     .hud-indicator:not(b) { color: transparent; }
-    .ti-lt { left: 20px !important; top: 20px !important; width: auto !important; transform: none !important; }
-    .ti-rt { right: 20px !important; top: 20px !important; width: auto !important; transform: none !important; }
+    /* HUD Fix: TOP-LEFT LOCK for Status to avoid Right-Side Collision */
+    .ti-lt { left: 20px !important; top: 15px !important; width: 70% !important; justify-content: flex-start !important; text-align: left !important; }
+    .ti-rt { right: 20px !important; top: 15px !important; width: auto !important; justify-content: flex-end !important; }
     .ti-rt b, .ti-lt b { color: var(--gold-muted); visibility: visible; }
     
     /* Hero Precision: Impactful Branding */
@@ -348,8 +349,8 @@ section {
         box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Refinement: Show the sign clearly */
-    .hero-bg { object-position: center 30%; transform: scale(1.15); filter: brightness(0.5); }
+    /* Background Refinement: ZOOM OUT and SHIFT RIGHT to see the sign */
+    .hero-bg { object-position: 85% 30%; transform: scale(1.0); filter: brightness(0.5); }
 
     /* Ticker Downscaling */
     #live-ticker { min-height: 60px !important; }
