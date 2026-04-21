@@ -257,7 +257,43 @@ section {
     color: var(--forest-ink);
 }
 
-/* --- HUD SYMBOLOGY --- */
+/* --- SPOTLIGHT CAROUSEL --- */
+#spotlight {
+    padding-bottom: 5vh;
+}
+
+#spotlight .matrix-card {
+    border: 1px solid var(--glass-border);
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+}
+
+#spotlight img {
+    filter: brightness(0.8) contrast(1.1);
+}
+
+/* Custom Scrollbar for Spotlight */
+#spotlight div::-webkit-scrollbar {
+    height: 4px;
+}
+#spotlight div::-webkit-scrollbar-track {
+    background: var(--forest-ink);
+}
+#spotlight div::-webkit-scrollbar-thumb {
+    background: var(--gold-glow);
+    border-radius: 10px;
+}
+
+/* --- CAPTURE PORTAL --- */
+#footer input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+#footer .badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--gold-glow);
+}
 .hud-indicator {
     position: fixed;
     z-index: 100;
@@ -265,10 +301,42 @@ section {
     letter-spacing: 0.3rem;
     color: var(--gold-muted);
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px currentColor;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 .ti-lt { top: 40px; left: 40px; }
 .ti-rt { top: 40px; right: 40px; }
+
+/* --- MOBILE OPTIMIZATION v6 --- */
+@media (max-width: 768px) {
+    section { padding: 40px 20px; min-height: auto; }
+    .editorial-grid { display: flex; flex-direction: column; gap: 20px; }
+    .hero-title { font-size: 3rem !important; }
+    .magnetic-logo { width: 200px !important; height: 200px !important; }
+    .hud-indicator { position: absolute; font-size: 0.5rem; letter-spacing: 0.1rem; }
+    .ti-lt { left: 20px; top: 20px; }
+    .ti-rt { right: 20px; top: 20px; }
+    .matrix-card { height: 400px; grid-column: auto !important; }
+    #allocation .matrix-card { flex-direction: column !important; height: auto; padding: 20px !important; }
+    #allocation img { width: 100% !important; height: 300px !important; }
+}
 
 /* --- CUSTOM CURSOR v4 --- */
 #cursor {

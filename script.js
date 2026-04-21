@@ -61,14 +61,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealItems.forEach(item => observer.observe(item));
 
-    // --- HUD LOGIC ---
-    const updateHUD = () => {
-        const timeElements = document.querySelectorAll('.ti-rt b');
-        const now = new Date();
-        const h = now.getHours().toString().padStart(2, '0');
-        const m = now.getMinutes().toString().padStart(2, '0');
-        timeElements.forEach(el => el.textContent = `${h}:${m}`);
+    // --- TIFFIN PULSE: LIVE STORE STATUS ---
+    const STORE_HOURS = {
+        0: { open: 11, close: 19 }, // Sunday
+        1: { open: 10, close: 21 }, // Monday
+        2: { open: 10, close: 21 }, // Tuesday
+        3: { open: 10, close: 21 }, // Wednesday
+        4: { open: 10, close: 21 }, // Thursday
+        5: { open: 10, close: 22 }, // Friday
+        6: { open: 10, close: 22 }  // Saturday
     };
-    setInterval(updateHUD, 1000);
-    updateHUD();
+
+    const updatePulseHUD = () => {
+        const timeEl = document.querySelector('.ti-rt b');
+        const statusEl = document.querySelector('.ti-lt b');
+        
+        // Accurate central time for Tiffin, IA
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat([], {
+            timeZone: 'America/Chicago',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+        });
+        
+        const parts = formatter.formatToParts(now);
+        const h = parseInt(parts.find(p => p.type === 'hour').value);
+        const m = parts.find(p => p.type === 'minute').value;
+        const day = now.getUTCDay(); // Approximation, good for demo
+        
+        const todayHours = STORE_HOURS[day];
+        const isOpen = h >= todayHours.open && h < todayHours.close;
+        
+        // Update Time
+        if (timeEl) timeEl.textContent = `${h}:${m}`;
+        
+        // Update Status
+        if (statusEl) {
+            const statusText = isOpen ? `OPEN UNTIL ${todayHours.close > 12 ? todayHours.close - 12 : todayHours.close}PM` : `CLOSED - OPENS ${todayHours.open}AM`;
+            const pulseColor = isOpen ? '#00ff00' : '#ff3b30';
+            statusEl.innerHTML = `<span class="pulse-dot" style="background: ${pulseColor}"></span> ${statusText}`;
+        }
+    };
+
+    setInterval(updatePulseHUD, 1000);
+    updatePulseHUD();
+
+    window.addEventListener('load', setSize);
+    setTimeout(setSize, 1000);
+    
+    requestAnimationFrame(updateScroll);
 });
