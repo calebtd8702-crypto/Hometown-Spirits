@@ -142,15 +142,24 @@ section {
     text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-.hero-year {
-    display: block;
-    font-size: 1rem;
-    letter-spacing: 0.5rem;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    opacity: 0.8;
+/* --- FEATURED SECTIONS v8.1 --- */
+#allocation { padding: 10vh 0; }
+.featured-card { 
+    grid-column: 2 / 12; 
+    display: flex; 
+    flex-direction: row; 
+    gap: 40px; 
+    padding: 2rem; 
 }
+.featured-card img { width: 50%; height: 500px; object-fit: cover; }
+.cta-text { color: var(--gold); margin-top: 2rem; font-weight: 700; letter-spacing: 0.2rem; }
+
+/* --- FOOTER REFINEMENT v8.1 --- */
+.footer-inner { grid-column: 2 / 12; text-align: center; padding: 6rem; }
+.footer-inner h2 { font-size: 5rem; color: var(--gold); margin-bottom: 2rem; }
+.footer-link { text-decoration: none; }
+.footer-link p { font-size: 2rem; color: var(--text-secondary); margin-bottom: 1rem; }
+.footer-tel { font-size: 1.5rem; letter-spacing: 0.5rem; color: var(--gold); }
 
 /* --- MATRIX 4.0 --- */
 .matrix-card {
@@ -347,16 +356,12 @@ section {
     .ticker-content span { font-size: 0.75rem !important; color: var(--gold) !important; font-weight: 600 !important; }
     .dot { width: 6px !important; height: 6px !important; background: var(--gold) !important; }
 
-    /* The Matrix: Simplified Stack */
-    .matrix-card { height: 400px !important; border-radius: 30px !important; margin-bottom: 0 !important; }
-    .matrix-title { font-size: 1.8rem !important; }
-    .matrix-info { padding: 2rem !important; }
-
-    /* Allocation: Featured Section */
-    #allocation .matrix-card { padding: 0 !important; background: var(--glass) !important; }
-    #allocation img { height: 300px !important; margin-bottom: 0 !important; }
-    #allocation .matrix-info { position: relative !important; padding: 2rem !important; text-align: center; }
-    #allocation .matrix-title { font-size: 2rem !important; margin-bottom: 1rem; }
+    /* Allocation: Featured Section v8.1 */
+    .featured-card { flex-direction: column !important; padding: 0 !important; gap: 0 !important; }
+    .featured-card img { width: 100% !important; height: 300px !important; }
+    .featured-card .matrix-info { position: relative !important; padding: 2rem !important; text-align: center; width: 100% !important; }
+    .featured-card .matrix-title { font-size: 2rem !important; margin-bottom: 1rem; overflow-wrap: break-word; }
+    .cta-text { margin-top: 1.5rem !important; font-size: 0.8rem !important; }
     
     /* Global Type Refinement */
     #story { padding: 100px 24px; }
