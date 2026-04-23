@@ -60,6 +60,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
+    // --- COMING SOON TOAST v8.9 ---
+    const showComingSoon = () => {
+        const toast = document.createElement('div');
+        toast.className = 'glass-panel reveal-up';
+        toast.style.cssText = `
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+            padding: 1rem 2rem; border: 1px solid var(--gold); background: var(--forest-deep);
+            color: var(--gold); z-index: 10000; font-weight: 600; letter-spacing: 0.1rem;
+            text-align: center; border-radius: 100px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        `;
+        toast.textContent = "DIGITAL CATALOG COMING SOON";
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.bottom = '20px';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    };
+
+    document.querySelectorAll('.matrix-card img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', showComingSoon);
+    });
+
     // --- TIFFIN PULSE: LIVE STORE STATUS ---
     const STORE_HOURS = {
         0: { open: 11, close: 19 }, // Sunday
