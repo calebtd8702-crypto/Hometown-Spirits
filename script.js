@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updatePulseHUD = () => {
-        const timeEl = document.querySelector('.ti-rt b');
-        const statusEl = document.querySelector('.ti-lt b');
+        const timeEl = document.querySelector('.time-indicator b');
+        const statusEl = document.querySelector('.status-indicator b');
         
         // Accurate central time for Tiffin, IA
         const now = new Date();
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const parts = formatter.formatToParts(now);
         const h = parseInt(parts.find(p => p.type === 'hour').value);
         const m = parts.find(p => p.type === 'minute').value;
-        const day = now.getUTCDay(); // Approximation, good for demo
+        const day = now.getDay();
         
         const todayHours = STORE_HOURS[day];
         const isOpen = h >= todayHours.open && h < todayHours.close;
@@ -108,9 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update Status
         if (statusEl) {
-            const statusText = isOpen ? `OPEN UNTIL ${todayHours.close > 12 ? todayHours.close - 12 : todayHours.close}PM` : `CLOSED - OPENS ${todayHours.open}AM`;
-            const pulseColor = isOpen ? '#00ff00' : '#ff3b30';
-            statusEl.innerHTML = `<span class="pulse-dot" style="background: ${pulseColor}"></span> ${statusText}`;
+            const statusText = isOpen ? `OPEN` : `CLOSED`;
+            statusEl.textContent = statusText;
+            statusEl.style.color = isOpen ? '#00ff00' : '#ff3b30';
         }
     };
 

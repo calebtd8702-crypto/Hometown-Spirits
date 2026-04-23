@@ -43,16 +43,12 @@ h1, h2, h3 {
     backface-visibility: hidden;
 }
 
-/* --- SCROLL ARCHITECTURE (RECOVERED) --- */
-.main-wrapper {
-    position: relative;
-    width: 100%;
+/* --- SCROLL ARCHITECTURE v8.0 (Flat & Native) --- */
+html, body {
+    height: auto;
     overflow-x: hidden;
-}
-
-#scroll-container {
-    width: 100%;
-    position: relative;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 section {
@@ -292,90 +288,88 @@ section {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px var(--gold-glow);
 }
-.hud-indicator {
-    position: fixed;
-    z-index: 100;
-    font-size: 0.65rem;
-    letter-spacing: 0.3rem;
-    color: var(--gold-muted);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* --- UNIFIED MOBILE NAV v8.0 --- */
+.mobile-nav {
+    display: none; /* Desktop hidden */
 }
 
-.pulse-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 10px currentColor;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-.ti-lt { top: 40px; left: 40px; }
-.ti-rt { top: 40px; right: 40px; }
-
-/* --- FINAL MOBILE PERFECTION v6.5 --- */
 @media (max-width: 768px) {
-    section { padding: 40px 20px; min-height: auto; }
-    .editorial-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; padding: 0; }
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        padding: 0 20px;
+        background: linear-gradient(180deg, var(--forest-ink) 0%, transparent 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 1000;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--glass-border);
+    }
     
-    /* HUD Fix: Explicit Corner Lock */
-    .hud-indicator { position: absolute; font-size: 0.65rem; letter-spacing: 0.15rem; z-index: 200; }
-    .hud-indicator:not(b) { color: transparent; }
-    /* HUD Flip: Status to Right, Time to Left */
-    .ti-lt { right: 20px !important; left: auto !important; top: 15px !important; width: auto !important; justify-content: flex-end !important; text-align: right !important; }
-    .ti-rt { left: 20px !important; right: auto !important; top: 15px !important; width: auto !important; justify-content: flex-start !important; }
-    .ti-rt b, .ti-lt b { color: var(--gold-muted); visibility: visible; }
+    .nav-item {
+        font-size: 0.7rem;
+        letter-spacing: 0.15rem;
+        color: var(--gold-muted);
+        text-transform: uppercase;
+    }
     
-    /* Hero Precision: Impactful Branding */
-    #hero { min-height: 85vh; padding-top: 10vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .hero-main { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .hero-title { font-size: 2rem !important; margin-top: 1rem !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
-    .hero-year { font-size: 0.85rem !important; margin-bottom: 0.5rem !important; opacity: 0.8; }
+    .nav-item b {
+        color: var(--gold);
+    }
+}
+
+/* --- MOBILE EXCELLENCE v8.0 --- */
+@media (max-width: 768px) {
+    section { padding: 80px 24px; min-height: auto; }
+    .editorial-grid { display: flex; flex-direction: column; gap: 40px; width: 100%; padding: 0; }
+    
+    /* Hero: Cinematic Center */
+    #hero { min-height: 90vh; padding-top: 60px; text-align: center; }
+    .hero-main { width: 100%; }
+    .hero-title { font-size: 2.2rem !important; margin-top: 1.5rem !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
+    .hero-year { font-size: 0.8rem !important; letter-spacing: 0.2rem !important; margin-bottom: 0.5rem !important; }
     .magnetic-logo { 
-        width: 180px !important; 
-        height: 180px !important; 
-        margin: 0 auto 1.5rem auto !important;
+        width: 160px !important; 
+        height: 160px !important; 
+        margin: 0 auto !important;
         box-shadow: 0 0 50px var(--gold-glow) !important;
     }
     
-    /* Background Refinement: Absolute Top Focal Point (40% X, 0% Y) */
-    .hero-bg { object-position: 40% 0%; transform: scale(0.95); filter: brightness(0.5); }
+    .hero-bg { object-position: 50% 10%; transform: scale(1.1); }
 
-    /* Ticker Downscaling */
-    #live-ticker { min-height: 60px !important; }
-    .ticker-content span { font-size: 0.9rem !important; padding-right: 2.5rem !important; }
-    .dot { width: 10px !important; height: 10px !important; margin-right: 2.5rem !important; }
+    /* Ticker: Subtitle Subtlety */
+    #live-ticker { min-height: 48px !important; background: var(--forest-deep) !important; border-top: 1px solid var(--gold-muted); border-bottom: 1px solid var(--gold-muted); }
+    .ticker-content span { font-size: 0.75rem !important; color: var(--gold) !important; font-weight: 600 !important; }
+    .dot { width: 6px !important; height: 6px !important; background: var(--gold) !important; }
 
-    /* Footer / Visit Overhaul */
-    #footer .glass-panel { padding: 4rem 20px !important; }
-    #footer h2 { font-size: 3rem !important; }
-    #footer p { font-size: 1.3rem !important; }
-    #footer .capture-box { margin-top: 2rem !important; }
+    /* The Matrix: Simplified Stack */
+    .matrix-card { height: 400px !important; border-radius: 30px !important; margin-bottom: 0 !important; }
+    .matrix-title { font-size: 1.8rem !important; }
+    .matrix-info { padding: 2rem !important; }
 
-    /* Global Typography Fixes */
-    .matrix-title { font-size: 1.6rem !important; }
-    #allocation .matrix-title { font-size: 2rem !important; }
+    /* Allocation: Featured Section */
+    #allocation .matrix-card { padding: 0 !important; background: var(--glass) !important; }
+    #allocation img { height: 300px !important; margin-bottom: 0 !important; }
+    #allocation .matrix-info { position: relative !important; padding: 2rem !important; text-align: center; }
+    #allocation .matrix-title { font-size: 2rem !important; margin-bottom: 1rem; }
+    
+    /* Global Type Refinement */
+    #story { padding: 100px 24px; }
+    .story-text h2 { font-size: 2.5rem !important; margin-bottom: 1.5rem !important; }
     #spotlight h2 { font-size: 2.2rem !important; }
-    .story-text h2 { font-size: 2.4rem !important; }
 
-    /* Hide Desktop Cursors */
+    /* Footer: Clean Editorial */
+    #footer .glass-panel { padding: 4rem 24px !important; border-radius: 0 !important; border-left: none; border-right: none; }
+    #footer h2 { font-size: 3.5rem !important; }
+    
+    /* Desktop Interaction Guard */
     #cursor, #cursor-follower { display: none !important; }
-
-    /* Matrix & Allocation Stacking: Fix Cutoff */
-    .matrix-card { height: 350px !important; grid-column: auto !important; }
-    #allocation .matrix-card { flex-direction: column !important; height: auto !important; padding: 40px 20px !important; }
-    #allocation img { width: 100% !important; height: 280px !important; margin-bottom: 2rem !important; }
-    #allocation .matrix-info { position: relative !important; width: 100% !important; padding: 0 !important; background: none !important; }
-    #allocation .matrix-title { font-size: 2rem !important; }
+    body { cursor: auto !important; }
 }
 
 /* --- CUSTOM CURSOR v4 --- */
