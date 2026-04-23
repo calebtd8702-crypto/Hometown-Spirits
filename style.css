@@ -161,6 +161,8 @@ section {
     height: 600px;
     border-radius: 40px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .matrix-card img {
@@ -173,13 +175,45 @@ section {
     position: absolute;
     bottom: 0; left: 0; width: 100%;
     padding: 3rem;
-    background: linear-gradient(0deg, rgba(8, 20, 18, 0.9) 0%, transparent 100%);
+    background: linear-gradient(0deg, rgba(4, 10, 9, 0.95) 0%, transparent 100%);
+    z-index: 10;
 }
 
 .matrix-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--gold);
+}
+
+/* Featured Card Exception (Professional v13.0) */
+.featured-card {
+    grid-column: 3 / 11;
+    height: auto !important;
+    min-height: 600px;
+}
+
+.featured-card img {
+    height: 400px;
+}
+
+.featured-card .matrix-info {
+    position: relative; /* Move text BELOW image */
+    background: var(--forest-deep);
+    padding: 3rem 2rem;
+}
+
+@media (max-width: 768px) {
+    .featured-card {
+        grid-column: 1 / 13;
+        min-height: auto;
+    }
+    .featured-card img {
+        height: 300px;
+    }
+    .matrix-title {
+        font-size: 2rem !important;
+        margin-bottom: 1rem;
+    }
 }
 
 /* --- TICKER --- */
