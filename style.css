@@ -359,7 +359,7 @@ section {
         backdrop-filter: none !important;
     }
     
-    .hero-bg { object-position: 45% 10%; transform: scale(1.1); }
+    .hero-bg { object-position: 55% 10%; transform: scale(1.1); }
 
     /* Ticker: Subtitle Subtlety */
     #live-ticker { min-height: 48px !important; background: var(--forest-deep) !important; border-top: 1px solid var(--gold-muted); border-bottom: 1px solid var(--gold-muted); }
