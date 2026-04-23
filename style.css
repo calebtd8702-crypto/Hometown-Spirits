@@ -49,7 +49,6 @@ html, body {
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: none; /* Prevent elastic bounce locking */
 }
 
 section {
@@ -308,16 +307,16 @@ section {
 @media (max-width: 768px) {
     .mobile-nav {
         display: flex;
-        position: absolute; /* NON-FIXED: Prevents scroll interference */
-        top: 0;
+        position: absolute; /* NON-FIXED: No scroll interference */
+        top: env(safe-area-inset-top); /* Notch clearance */
         left: 0;
         width: 100%;
-        height: 80px;
-        padding: 0 24px;
-        background: transparent;
+        height: 60px;
+        padding: 20px 24px 0 24px;
+        background: linear-gradient(180deg, rgba(8, 20, 18, 0.8) 0%, transparent 100%);
         z-index: 1000;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         border-bottom: none;
         pointer-events: auto;
     }
