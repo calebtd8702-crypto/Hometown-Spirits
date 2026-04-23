@@ -337,16 +337,19 @@ section {
     section { padding: 80px 24px; min-height: auto; }
     .editorial-grid { display: flex; flex-direction: column; gap: 40px; width: 100%; padding: 0; }
     
-    /* Hero: Cinematic Center */
-    #hero { min-height: 90vh; padding-top: 60px; text-align: center; }
-    .hero-main { width: 100%; }
-    .hero-title { font-size: 2.2rem !important; margin-top: 1.5rem !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
-    .hero-year { font-size: 0.8rem !important; letter-spacing: 0.2rem !important; margin-bottom: 0.5rem !important; }
+    /* Hero: Cinematic Center v8.2 */
+    #hero { min-height: 90vh; padding: 0 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .hero-main { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .hero-title { font-size: 2.6rem !important; margin-top: 1.5rem !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
+    .hero-year { font-size: 0.85rem !important; letter-spacing: 0.2rem !important; margin-bottom: 0.5rem !important; }
     .magnetic-logo { 
-        width: 160px !important; 
-        height: 160px !important; 
+        width: 200px !important; 
+        height: 200px !important; 
         margin: 0 auto !important;
-        box-shadow: 0 0 50px var(--gold-glow) !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
     }
     
     .hero-bg { object-position: 50% 10%; transform: scale(1.1); }
