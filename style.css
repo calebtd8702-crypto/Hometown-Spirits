@@ -49,6 +49,7 @@ html, body {
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y; /* Force vertical scroll priority */
 }
 
 section {
@@ -352,7 +353,7 @@ section {
         backdrop-filter: none !important;
     }
     
-    .hero-bg { object-position: 65% 10%; transform: scale(1.1); }
+    .hero-bg { object-position: 15% 10%; transform: scale(1.1); }
 
     /* Ticker: Subtitle Subtlety */
     #live-ticker { min-height: 48px !important; background: var(--forest-deep) !important; border-top: 1px solid var(--gold-muted); border-bottom: 1px solid var(--gold-muted); }
@@ -398,7 +399,7 @@ section {
     border: 1px solid var(--gold-muted);
     border-radius: 50%;
     position: fixed;
-    pointer-events: none;
+    pointer-events: none !important;
     z-index: 9998;
     transition: width 0.3s, height 0.3s, background 0.3s;
 }
