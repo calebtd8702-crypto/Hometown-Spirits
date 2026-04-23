@@ -27,23 +27,21 @@ html, body {
     background-color: var(--forest-ink);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    overflow-y: auto; /* Ensure native scroll is ALWAYS on */
 }
 
-/* --- THE FIX: NATIVE SCROLL PRIORITY --- */
+/* --- THE FIX: NATIVE SCROLL ONLY --- */
 body {
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
 }
 
 section {
     position: relative;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 120px 24px;
+    padding: 100px 24px;
 }
 
 .editorial-grid {
@@ -238,14 +236,8 @@ section {
 .footer-link p { font-size: 1.5rem; margin-top: 1rem; }
 .footer-tel { color: var(--gold); font-size: 1.2rem; margin-top: 0.5rem; }
 
-/* REVEALS */
+/* REVEALS (Instant v11.2) */
 .reveal-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.reveal-up.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
