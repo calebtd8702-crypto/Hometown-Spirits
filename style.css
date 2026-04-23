@@ -119,19 +119,20 @@ section {
 .magnetic-logo {
     width: 320px;
     height: 320px;
-    margin: 0 auto 2rem auto; /* Block center */
+    margin: 0 auto 2rem auto;
     border-radius: 50%;
-    border: 3px solid var(--gold);
-    box-shadow: 0 0 60px var(--gold-glow);
-    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
-    display: block;
-    background: rgba(8, 20, 18, 0.6);
-    backdrop-filter: blur(10px);
     object-fit: contain;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
 }
 
 .magnetic-logo:hover {
-    box-shadow: 0 0 100px var(--gold-muted);
+    transform: scale(1.02);
 }
 
 .hero-title {
@@ -353,7 +354,7 @@ section {
         backdrop-filter: none !important;
     }
     
-    .hero-bg { object-position: 15% 10%; transform: scale(1.1); }
+    .hero-bg { object-position: 45% 10%; transform: scale(1.1); }
 
     /* Ticker: Subtitle Subtlety */
     #live-ticker { min-height: 48px !important; background: var(--forest-deep) !important; border-top: 1px solid var(--gold-muted); border-bottom: 1px solid var(--gold-muted); }
