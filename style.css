@@ -1,47 +1,49 @@
-/* --- EMERGENCY SCROLL RESET v11.0 --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --forest-ink: #081412;
+    --forest-deep: #162622;
+    --gold: #d4af37;
+    --gold-muted: rgba(212, 175, 55, 0.6);
+    --gold-glow: rgba(212, 175, 55, 0.2);
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f8f8f8;
+    --text-secondary: #8a9a97;
+    --accent: #d4af37;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: 1.2s var(--ease);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
 }
 
 html, body {
     width: 100%;
-    min-height: 100%;
-    background-color: #081412;
-    color: #ffffff;
+    background-color: var(--forest-ink);
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    /* NO OVERFLOW HIDDEN OR AUTO - LET BROWSER HANDLE IT */
+    overflow-y: auto; /* Ensure native scroll is ALWAYS on */
 }
 
-/* Force all reveal items to be visible instantly */
-.reveal-up, .reveal-left, .reveal-right {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-
-:root {
-    --gold: #D4AF37;
-    --gold-muted: rgba(212, 175, 55, 0.6);
-    --gold-glow: rgba(212, 175, 55, 0.3);
-    --forest-deep: #081412;
-    --forest-ink: #040a09;
-    --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
+/* --- THE FIX: NATIVE SCROLL PRIORITY --- */
+body {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 }
 
 section {
-    padding: 100px 24px;
     position: relative;
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding: 120px 24px;
 }
 
 .editorial-grid {
@@ -49,93 +51,113 @@ section {
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1600px;
+    z-index: 5;
 }
 
 .glass-panel {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(212, 175, 55, 0.1);
-    border-radius: 20px;
-    padding: 40px;
+    background: var(--glass);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 0.5px solid rgba(212, 175, 55, 0.15);
+    border-radius: 40px;
+    padding: 4rem;
 }
 
-/* Hero Reset */
+/* --- HERO --- */
 #hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    min-height: 100vh;
     padding: 0;
+    overflow: hidden;
 }
 
 .hero-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 0;
+    transform: scale(1.1);
 }
 
 .bg-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(180deg, rgba(8,20,18,0.4) 0%, #081412 100%);
-    z-index: 0;
+    background: linear-gradient(180deg, rgba(8, 20, 18, 0.3) 0%, var(--forest-ink) 100%);
+    z-index: 1;
 }
 
 .hero-main {
+    grid-column: 2 / 12;
+    text-align: center;
     position: relative;
     z-index: 10;
 }
 
 .magnetic-logo {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 2rem;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto 2rem auto;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 20;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--text-primary);
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* Mobile Adjustments */
+/* --- MOBILE HEADER (v11.1 Stability) --- */
+.mobile-nav {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .mobile-nav {
+        display: flex;
         position: absolute;
         top: 20px;
         left: 0;
         width: 100%;
-        display: flex;
-        justify-content: space-between;
         padding: 0 24px;
-        z-index: 100;
+        z-index: 1000;
+        justify-content: space-between;
+        pointer-events: none; /* KEY: Never block scroll */
     }
     
-    .hero-bg {
-        object-position: 65% center;
+    .nav-item {
+        pointer-events: auto;
+        font-size: 0.7rem;
+        letter-spacing: 0.15rem;
+        color: var(--gold-muted);
+        text-transform: uppercase;
     }
     
-    section {
-        padding: 60px 20px;
-    }
+    .nav-item b { color: var(--gold); }
+
+    section { padding: 80px 24px; }
+    .editorial-grid { display: flex; flex-direction: column; gap: 40px; }
     
-    .editorial-grid {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .glass-panel {
-        padding: 30px 20px;
-    }
+    #hero { min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .hero-main { width: 100%; }
+    .hero-title { font-size: 2.6rem !important; }
+    .magnetic-logo { width: 220px !important; height: 220px !important; margin: 0 auto !important; }
+    .hero-bg { object-position: 65% center; }
 }
 
-/* Matrix Cards */
+/* --- MATRIX --- */
 .matrix-card {
+    grid-column: span 4;
     position: relative;
+    height: 600px;
+    border-radius: 40px;
     overflow: hidden;
-    border-radius: 20px;
-    height: 400px;
 }
 
 .matrix-card img {
@@ -146,44 +168,84 @@ section {
 
 .matrix-info {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(0deg, #000 0%, transparent 100%);
+    bottom: 0; left: 0; width: 100%;
+    padding: 3rem;
+    background: linear-gradient(0deg, rgba(8, 20, 18, 0.9) 0%, transparent 100%);
 }
 
-.badge.gold {
-    display: inline-block;
-    padding: 8px 16px;
-    background: var(--gold);
-    color: #000;
-    font-weight: bold;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    margin-top: 10px;
+.matrix-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
 }
 
-.ticker-wrapper {
+/* --- TICKER --- */
+#live-ticker {
     background: #040a09;
-    padding: 15px 0;
+    padding: 20px 0;
     overflow: hidden;
-    white-space: nowrap;
 }
 
 .ticker-content {
-    display: inline-block;
-    animation: ticker 30s linear infinite;
+    display: flex;
+    animation: ticker-scroll 30s linear infinite;
 }
 
-@keyframes ticker {
+.ticker-content span {
+    padding-right: 4rem;
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+@keyframes ticker-scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
-.ticker-content span {
-    padding: 0 40px;
+/* --- ALLOCATION --- */
+.featured-card {
+    grid-column: 3 / 11;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.badge.gold {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--gold);
+    color: #000;
+    border-radius: 100px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* --- FOOTER --- */
+.footer-inner {
+    grid-column: 2 / 12;
+    text-align: center;
+}
+
+.footer-inner h2 {
+    font-size: clamp(3rem, 8vw, 5rem);
     color: var(--gold);
-    font-weight: bold;
+}
+
+.footer-link { text-decoration: none; color: inherit; }
+.footer-link p { font-size: 1.5rem; margin-top: 1rem; }
+.footer-tel { color: var(--gold); font-size: 1.2rem; margin-top: 0.5rem; }
+
+/* REVEALS */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
 }
