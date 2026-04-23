@@ -147,7 +147,7 @@ section {
     .hero-main { width: 100%; }
     .hero-title { font-size: 2.4rem !important; text-align: center; }
     .magnetic-logo { width: 180px !important; height: 180px !important; margin: 0 auto !important; }
-    .hero-bg { object-position: 35% center; filter: brightness(0.35); }
+    .hero-bg { object-position: 80% center; filter: brightness(0.35); }
     
     #spotlight h2 { text-align: center !important; font-size: 2.2rem !important; }
     #spotlight .editorial-grid { align-items: center; }
