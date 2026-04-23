@@ -43,13 +43,13 @@ h1, h2, h3 {
     backface-visibility: hidden;
 }
 
-/* --- SCROLL ARCHITECTURE v8.0 (Flat & Native) --- */
+/* --- SCROLL ARCHITECTURE v9.0 (Native Elite) --- */
 html, body {
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-y; /* Force vertical scroll priority */
+    overscroll-behavior-y: none; /* Prevent elastic bounce locking */
 }
 
 section {
@@ -320,6 +320,11 @@ section {
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid var(--glass-border);
+        pointer-events: none; /* Let scroll pass through */
+    }
+
+    .mobile-nav .nav-item { 
+        pointer-events: auto; /* Indicators stay interactive */
     }
     
     .nav-item {
