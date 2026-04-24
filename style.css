@@ -237,7 +237,41 @@ section {
     .magazine-content { padding: 3rem 2rem; }
     .matrix-item { grid-column: 1 / 13; height: 450px; }
     section { padding: 100px 24px; }
-    .hero-bg { object-position: 80% center; }
+    .hero-bg { object-position: 95% center; }
+}
+
+/* --- FOOTER POLISH --- */
+.footer-input-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+.luxury-input {
+    flex: 1;
+    background: var(--ink);
+    border: 1px solid var(--glass-border);
+    padding: 1.2rem;
+    color: #fff;
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+}
+
+.luxury-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+@media (max-width: 600px) {
+    .footer-input-group {
+        flex-direction: column;
+    }
+    .badge-gold {
+        width: 100%;
+        padding: 16px;
+    }
 }
 
 .mobile-nav { display: none; }
