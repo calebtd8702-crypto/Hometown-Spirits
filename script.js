@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- FINAL STABILITY BUILD v11.1 ---
+    // --- THE LUXURIOUS STANDARD v14.0 ---
     
-    // --- REVEAL ON SCROLL ---
+    // 1. REVEAL OBSERVER
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -10,18 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // --- STORE STATUS ---
+    // 2. STORE STATUS HUD
     const STORE_HOURS = {
-        0: { open: 11, close: 19 }, 1: { open: 10, close: 21 }, 2: { open: 10, close: 21 }, 
-        3: { open: 10, close: 21 }, 4: { open: 10, close: 21 }, 5: { open: 10, close: 22 }, 
-        6: { open: 10, close: 22 }
+        0: { open: 11, close: 19 }, // Sun
+        1: { open: 10, close: 21 }, // Mon
+        2: { open: 10, close: 21 }, // Tue
+        3: { open: 10, close: 21 }, // Wed
+        4: { open: 10, close: 21 }, // Thu
+        5: { open: 10, close: 22 }, // Fri
+        6: { open: 10, close: 22 }  // Sat
     };
 
-    const updatePulseHUD = () => {
-        const timeEl = document.querySelector('.time-indicator b');
-        const statusEl = document.querySelector('.status-indicator b');
+    const updateStatus = () => {
+        const timeEl = document.querySelector('.time-indicator');
+        const statusEl = document.querySelector('.status-indicator');
         if (!timeEl || !statusEl) return;
 
         const now = new Date();
@@ -42,11 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {}
     };
 
-    // --- COMING SOON ---
-    document.querySelectorAll('.matrix-card img').forEach(img => {
-        img.addEventListener('click', () => alert("DIGITAL CATALOG COMING SOON"));
+    // 3. CATALOG INTERACTION
+    document.querySelectorAll('.matrix-item img, .magazine-img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            alert("DIGITAL CATALOG COMING SOON");
+        });
     });
 
-    updatePulseHUD();
-    setInterval(updatePulseHUD, 60000);
+    updateStatus();
+    setInterval(updateStatus, 60000);
 });
