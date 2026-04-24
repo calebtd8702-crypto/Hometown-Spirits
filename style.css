@@ -237,7 +237,10 @@ section {
     .magazine-content { padding: 3rem 2rem; }
     .matrix-item { grid-column: 1 / 13; height: 450px; }
     section { padding: 100px 24px; }
-    .hero-bg { object-position: 95% center; }
+    .hero-bg { object-position: 40% center; }
+    .hero-main { margin-top: -4rem; } /* Pull logo higher */
+    
+    #testimonials .h-m { font-size: 1.5rem !important; line-height: 1.4 !important; }
 }
 
 /* --- FOOTER POLISH --- */
